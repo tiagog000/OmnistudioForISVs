@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Import_OmniUICards_from_CSV</name>
+        <label>Import OmniUICards from CSV</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <actionName>ConvertCSVToRecords</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Create_OmniUICards_records</targetReference>
+        </connector>
+        <dataTypeMappings>
+            <typeName>U__convertedCSVRows</typeName>
+            <typeValue>OmniUiCard</typeValue>
+        </dataTypeMappings>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>objectApiName</name>
+            <value>
+                <stringValue>OmniUICard</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>StaticResourceName</name>
+            <value>
+                <elementReference>StaticResourceName</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <interviewLabel>Import Omni Components - OmniUICards {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Import Omni Components - OmniUICards</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_OmniUICards_records</name>
+        <label>Create OmniUICards records</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <inputReference>Import_OmniUICards_from_CSV.convertedCSVRows</inputReference>
+    </recordCreates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Import_OmniUICards_from_CSV</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Static Resource Name of file to be queried</description>
+        <name>StaticResourceName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>OmniUICards</stringValue>
+        </value>
+    </variables>
+</Flow>
